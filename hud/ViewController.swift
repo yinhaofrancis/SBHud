@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var ca: UISlider!
     @IBOutlet weak var a: WaiterAnimatonDisplayView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +20,5 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBAction func aaa(_ sender: Any) {
-        a.m = Double(ca.value)
-    }
-
-
 }
 

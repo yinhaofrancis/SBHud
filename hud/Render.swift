@@ -14,54 +14,54 @@ public protocol IContentRender{
     func hiddenAnimation(hub:UIView) -> CAAnimation
     func during()->TimeInterval
 }
-//public class WaiterContentRender:IContentRender{
-//    public func hiddenAnimation(hub: UIView) -> CAAnimation {
-//        
-//    }
-//
-//    public func showAnimation(hub: UIView) -> CAAnimation {
-//        
-//    }
-//
-//    public func render(container: UIView) {
-//        
-//    }
-//    public func during() -> TimeInterval {
-//        return 3
-//    }
-//    
-//}
 func + (a:CATransform3D,b:CATransform3D)->CATransform3D{
     return CATransform3DConcat(a, b)
 }
-@IBDesignable
 public class WaiterAnimatonDisplayView:UIView{
-    public var itemColor:UIColor = UIColor.red
-    let aniamtionLayer:CAReplicatorLayer = CAReplicatorLayer()
-    let itemLayer:CALayer = CALayer()
-    @IBInspectable var m:Double = 10
+    var items:[CALayer] = []
     public override func didMoveToWindow() {
-        
-        
+        loadContent()
     }
-    var item:UIImage = {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width:10,height:10), false, UIScreen.main.scale)
-        let p = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 10, height: 10))
-        UIColor.red.setFill()
-        p.fill()
-        return UIGraphicsGetImageFromCurrentImageContext()!
-    }()
     public override func layoutSubviews() {
-        aniamtionLayer.instanceCount = 5
-        aniamtionLayer.instanceTransform = CATransform3DMakeRotation(CGFloat(M_PI_4 / 4 + m * 0.1), 0, 0, 1)
-        aniamtionLayer.instanceColor = UIColor.red.cgColor
-        aniamtionLayer.instanceDelay = m * 0.1
-       
-        self.itemLayer.contents = item.cgImage
         
-        aniamtionLayer.addSublayer(itemLayer)
-        aniamtionLayer.frame = self.bounds
-        self.itemLayer.frame = CGRect(x: self.bounds.minX + 10, y:self.bounds.midY, width: 10, height: 10)
-        self.layer.addSublayer(aniamtionLayer)
+        loadAnimation(radius: min(self.bounds.midX, self.bounds.midY))
+    }
+    
+    func loadAnimation(radius:CGFloat = 30){
+        let ass = makeAnimations(during: 2,radius: radius)
+        (0..<count).forEach { (i) in
+            items[i].add(ass[i], forKey: nil)
+        }
+    }
+    public static var color:UIColor = UIColor.red
+    public var image:UIImage = {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width:10,height:10), false, UIScreen.main.scale)
+        WaiterAnimatonDisplayView.color.setFill()
+        UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 10, height: 10)).fill()
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return img!
+    }()
+    let count = 8
+    func loadContent() {
+        items = (0..<count).map { (i) -> CALayer in
+            return CALayer()
+        }
+        items.forEach { (item) in
+            item.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
+            item.contents = image.cgImage
+            self.layer.addSublayer(item)
+        }
+    }
+    func makeAnimations(during:CFTimeInterval,radius:CGFloat = 30)->[CAAnimation]{
+        return (0..<count).map { (i) -> CAAnimation in
+            let a = CAKeyframeAnimation(keyPath: "position")
+            let p = UIBezierPath()
+            p.addArc(withCenter: CGPoint(x:self.bounds.midX,y:self.bounds.midY), radius: radius, startAngle: 0 + CGFloat(i) * CGFloat(M_PI * 2 / Double(self.count)), endAngle: CGFloat(M_PI * 2) + CGFloat(i) * CGFloat(M_PI * 2 / Double(self.count)), clockwise: true)
+            a.path = p.cgPath
+            a.duration = during
+            a.repeatCount = Float.infinity
+            return a
+        }
     }
 }
