@@ -49,6 +49,7 @@
 		A93D311C1E83BB1500247544 /* hudUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hudUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A93D31201E83BB1500247544 /* hudUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hudUITests.swift; sourceTree = "<group>"; };
 		A93D31221E83BB1500247544 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A93F18811E85269500867F9D /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = hudTests/MyPlayground.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +80,7 @@
 		A93D30F41E83BB1500247544 = {
 			isa = PBXGroup;
 			children = (
+				A93F18811E85269500867F9D /* MyPlayground.playground */,
 				A93D30FF1E83BB1500247544 /* hud */,
 				A93D31141E83BB1500247544 /* hudTests */,
 				A93D311F1E83BB1500247544 /* hudUITests */,
