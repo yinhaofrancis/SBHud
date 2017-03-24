@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var a: WaiterAnimatonDisplayView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -19,6 +18,13 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    let a = HudPlainMaker().makeCircle(color: UIColor.black)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        a.showHud(from: self, delay: 3)
+    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
     }
 }
 

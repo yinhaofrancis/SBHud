@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A92D4D341E850459000B12C8 /* HudPlain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D4D331E850459000B12C8 /* HudPlain.swift */; };
 		A93D31011E83BB1500247544 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D31001E83BB1500247544 /* AppDelegate.swift */; };
 		A93D31031E83BB1500247544 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D31021E83BB1500247544 /* ViewController.swift */; };
 		A93D31061E83BB1500247544 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A93D31041E83BB1500247544 /* Main.storyboard */; };
@@ -14,9 +15,6 @@
 		A93D310B1E83BB1500247544 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A93D31091E83BB1500247544 /* LaunchScreen.storyboard */; };
 		A93D31161E83BB1500247544 /* hudTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D31151E83BB1500247544 /* hudTests.swift */; };
 		A93D31211E83BB1500247544 /* hudUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D31201E83BB1500247544 /* hudUITests.swift */; };
-		A93D312F1E83BDB200247544 /* hudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D312E1E83BDB200247544 /* hudView.swift */; };
-		A93D31311E83C4A800247544 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D31301E83C4A800247544 /* Factory.swift */; };
-		A93D31331E83C51900247544 /* Render.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D31321E83C51900247544 /* Render.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A92D4D331E850459000B12C8 /* HudPlain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudPlain.swift; sourceTree = "<group>"; };
 		A93D30FD1E83BB1500247544 /* hud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A93D31001E83BB1500247544 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A93D31021E83BB1500247544 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,9 +49,6 @@
 		A93D311C1E83BB1500247544 /* hudUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hudUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A93D31201E83BB1500247544 /* hudUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hudUITests.swift; sourceTree = "<group>"; };
 		A93D31221E83BB1500247544 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A93D312E1E83BDB200247544 /* hudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hudView.swift; sourceTree = "<group>"; };
-		A93D31301E83C4A800247544 /* Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
-		A93D31321E83C51900247544 /* Render.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Render.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,9 +105,7 @@
 				A93D31071E83BB1500247544 /* Assets.xcassets */,
 				A93D31091E83BB1500247544 /* LaunchScreen.storyboard */,
 				A93D310C1E83BB1500247544 /* Info.plist */,
-				A93D31301E83C4A800247544 /* Factory.swift */,
-				A93D312E1E83BDB200247544 /* hudView.swift */,
-				A93D31321E83C51900247544 /* Render.swift */,
+				A92D4D331E850459000B12C8 /* HudPlain.swift */,
 			);
 			path = hud;
 			sourceTree = "<group>";
@@ -271,10 +265,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A93D31331E83C51900247544 /* Render.swift in Sources */,
-				A93D31311E83C4A800247544 /* Factory.swift in Sources */,
 				A93D31031E83BB1500247544 /* ViewController.swift in Sources */,
-				A93D312F1E83BDB200247544 /* hudView.swift in Sources */,
+				A92D4D341E850459000B12C8 /* HudPlain.swift in Sources */,
 				A93D31011E83BB1500247544 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -524,6 +516,7 @@
 				A93D31271E83BB1500247544 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A93D31281E83BB1500247544 /* Build configuration list for PBXNativeTarget "hudTests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +525,7 @@
 				A93D312A1E83BB1500247544 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A93D312B1E83BB1500247544 /* Build configuration list for PBXNativeTarget "hudUITests" */ = {
 			isa = XCConfigurationList;
@@ -540,6 +534,7 @@
 				A93D312D1E83BB1500247544 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
