@@ -223,7 +223,7 @@ public class HudPlainMaker:NSObject{
         c.CircleView.color = color
         c.label.text = text
         hud.content = { (_) in c}
-        
+        c.CircleView.isElement = true
         hud.Style = {$0.0.view.backgroundColor = UIColor.gray.withAlphaComponent(0.4)}
         hud.layoutStyle = HudLayoutStyle.middleAuto(max: 320, min: 80, HorizonOffset: 20)
         UIGraphicsBeginImageContextWithOptions(CGSize(width:40,height:40), false, UIScreen.main.scale)

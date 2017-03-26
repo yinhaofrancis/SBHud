@@ -47,7 +47,7 @@ public class CircleIndicateView:UIView{
     func flush(){
         self.shapeLayer.fillColor = UIColor.clear.cgColor
         self.shapeLayer.strokeColor = self.color.cgColor
-        let p = UIBezierPath(arcCenter: CGPoint(x:self.bounds.midX,y:self.bounds.midY), radius: min(self.bounds.midX,self.bounds.midY) - self.shapeLayer.lineWidth - 8, startAngle: CGFloat(M_PI * j * 0.02 + y * 0.1 * M_PI), endAngle: CGFloat(M_PI * i * 0.02 + y * 0.1 * M_PI), clockwise: true)
+        let p = UIBezierPath(arcCenter: CGPoint(x:self.bounds.midX,y:self.bounds.midY), radius: min(self.bounds.midX,self.bounds.midY) - self.shapeLayer.lineWidth - (isElement ? 0 : 8), startAngle: CGFloat(M_PI * j * 0.02 + y * 0.1 * M_PI), endAngle: CGFloat(M_PI * i * 0.02 + y * 0.1 * M_PI), clockwise: true)
         self.shapeLayer.path = p.cgPath
         
         if sin(y/2) > 0{
@@ -59,4 +59,5 @@ public class CircleIndicateView:UIView{
         }
         y += 0.1
     }
+    public var isElement = false
 }
