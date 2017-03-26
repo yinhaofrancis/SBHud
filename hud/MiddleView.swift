@@ -34,10 +34,10 @@ public class MiddleHudView<icon:UIView>:UIImageView{
         
     }
     func layout(){
-        let h = NSLayoutConstraint.constraints(withVisualFormat: "H:|-8-[view(64)]-8-[label]-8-|", options: .alignAllTop, metrics: nil, views: ["view":self.CircleView,"label":self.label])
-        let vl = NSLayoutConstraint.constraints(withVisualFormat: "V:|-12-[label]-12-|", options: .alignAllBottom, metrics: nil, views: ["label":self.label])
+        let h = NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[view(64)]-20-[label]-20-|", options: .alignAllTop, metrics: nil, views: ["view":self.CircleView,"label":self.label])
+        let vl = NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[label]-20-|", options: .alignAllBottom, metrics: nil, views: ["label":self.label])
         
-        let vc = NSLayoutConstraint.constraints(withVisualFormat: "V:[view(64)]-(>=12)-|", options: .alignAllBottom, metrics: nil, views: ["view":self.CircleView])
+        let vc = NSLayoutConstraint.constraints(withVisualFormat: "V:[view(64)]-(>=20)-|", options: .alignAllBottom, metrics: nil, views: ["view":self.CircleView])
         self.addConstraints(h + vl + vc)
     }
 }
