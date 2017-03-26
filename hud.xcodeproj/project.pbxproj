@@ -15,6 +15,8 @@
 		A93D310B1E83BB1500247544 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A93D31091E83BB1500247544 /* LaunchScreen.storyboard */; };
 		A93D31161E83BB1500247544 /* hudTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D31151E83BB1500247544 /* hudTests.swift */; };
 		A93D31211E83BB1500247544 /* hudUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D31201E83BB1500247544 /* hudUITests.swift */; };
+		A9DF0BB61E863D6C004036EB /* CircleIndicateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DF0BB51E863D6C004036EB /* CircleIndicateView.swift */; };
+		A9DF0BB81E881062004036EB /* MiddleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DF0BB71E881062004036EB /* MiddleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		A93D31201E83BB1500247544 /* hudUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hudUITests.swift; sourceTree = "<group>"; };
 		A93D31221E83BB1500247544 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A93F18811E85269500867F9D /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = hudTests/MyPlayground.playground; sourceTree = "<group>"; };
+		A9DF0BB51E863D6C004036EB /* CircleIndicateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleIndicateView.swift; sourceTree = "<group>"; };
+		A9DF0BB71E881062004036EB /* MiddleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiddleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,8 @@
 				A93D31091E83BB1500247544 /* LaunchScreen.storyboard */,
 				A93D310C1E83BB1500247544 /* Info.plist */,
 				A92D4D331E850459000B12C8 /* HudPlain.swift */,
+				A9DF0BB71E881062004036EB /* MiddleView.swift */,
+				A9DF0BB51E863D6C004036EB /* CircleIndicateView.swift */,
 			);
 			path = hud;
 			sourceTree = "<group>";
@@ -267,7 +273,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9DF0BB81E881062004036EB /* MiddleView.swift in Sources */,
 				A93D31031E83BB1500247544 /* ViewController.swift in Sources */,
+				A9DF0BB61E863D6C004036EB /* CircleIndicateView.swift in Sources */,
 				A92D4D341E850459000B12C8 /* HudPlain.swift in Sources */,
 				A93D31011E83BB1500247544 /* AppDelegate.swift in Sources */,
 			);

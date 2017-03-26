@@ -20,7 +20,22 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.5116267363" blue="0.51838794970000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5r-3I-ftm">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <string key="text">Label放假啊圣迭戈附近阿萨德和规范就撒谎的功夫都是过分上的功夫环境上的功夫就啊还是代购发撒的黄金股份撒娇好的功夫就啊还是代购发哈三等功负担和技术法规sad 会发光撒谎的景福宫撒娇和蛋糕发伤筋动骨风景还是代购发生的功夫空间啊上的功夫看撒娇和蛋糕饭都是过分就啊的时刻发噶三等功饭撒看见的风格看撒娇的饭噶时代咖啡就啊三等功分开就啊上的功夫库萨的嘎是抠脚大汉个房间的功夫就哈三等功看风景啊刚收到就会发光就撒的功夫就啊的会是过分啊闪光灯复合弓撒的科技高峰卡技术大会高峰</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="u5r-3I-ftm" secondAttribute="bottom" id="PJY-Ep-I5m"/>
+                            <constraint firstAttribute="trailing" secondItem="u5r-3I-ftm" secondAttribute="trailing" id="T47-YP-Bb6"/>
+                            <constraint firstItem="u5r-3I-ftm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qsv-E9-NgU"/>
+                            <constraint firstItem="u5r-3I-ftm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="zvL-BJ-ymT"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

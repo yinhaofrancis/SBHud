@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    let a = HudPlainMaker().makeCircle(color: UIColor.black)
+    let a = HudPlainMaker().makeMiddle(text: "asdasdad", color: UIColor.blue)
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         a.showHud(from: self, delay: 3)
     }
