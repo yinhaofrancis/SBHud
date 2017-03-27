@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,11 +19,29 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    let a = HudPlainMaker().makeMiddle(text: "正在连接，请等待。。。。", color: UIColor.blue)
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        a.showHud(from: self, delay: 3)
-    }
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    let make = HudPlainMaker()
+    let data = [
+        [
+            ["type":HudStyle.waitting,"color":UIColor.purple],
+            ["type":HudStyle.warnning,"color":UIColor.purple],
+            ["type":HudStyle.failure,"color":UIColor.purple],
+            ["type":HudStyle.success,"color":UIColor.purple]
+        ]
+    ]
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0{
+            make.makeCenter(color: data[0][indexPath.row]["color"] as! UIColor, stype: data[0][indexPath.row]["type"] as! HudStyle).showHud(from: self, delay: 3)
+        }else if indexPath.section == 1{
+            make.makeMiddle(text: "请等待", color: data[0][indexPath.row]["color"] as! UIColor, style: data[0][indexPath.row]["type"] as! HudStyle).showHud(from: self, delay: 3)
+        }else if indexPath.section == 2{
+            let a = make.makeProcess(color: UIColor.red)
+            
+            a.showHud(from: self)
+            
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (t) in
+                a.process += 0.1
+            })
+        }
         
     }
 }

@@ -22,12 +22,11 @@ public enum HudLayoutStyle{
 public protocol hock{
     func start(contain:HudPlain)
     func stop(contain:HudPlain)
-    func time(time:TimeInterval)
 }
 extension UIView:hock{
     public func stop(contain: HudPlain) {}
     public func start(contain: HudPlain) {}
-    public func time(time: TimeInterval) {}
+    public func time(time: CGFloat) {}
 }
 public class HudPlain:UIViewController{
     public var content:(HudPlain)->UIView = {(self) in
@@ -47,18 +46,21 @@ public class HudPlain:UIViewController{
     
     public var animationShow:(HudPlain,UIView,((Bool) -> Void)?)->Void = {(self,content,complete) in
         self.view.alpha = 0
+        content.layer.position.y = 10
         UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: { 
             self.view.alpha = 1
+            content.layer.position.y = 0
         }, completion: complete)
     }
     public var animationClose:(HudPlain,UIView,((Bool) -> Void)?)->Void = {(self,content:UIView,complete) in
         self.view.alpha = 1
         UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: {
             self.view.alpha = 0
+            
         }, completion: complete)
     }
     public var useDefaultAnimation:Bool = false
-    private var contentView:UIView?
+    var contentView:UIView?
     func layerOut(){
         let v = self.content(self)
         contentView = v
@@ -156,16 +158,21 @@ public class HudPlain:UIViewController{
         guard (self.view.window == nil) else {
             return
         }
-        if let d = delay{
-            Timer.scheduledTimer(timeInterval: d, target: self, selector: #selector(innnerClose), userInfo: nil, repeats: false)
-            self.contentView?.time(time: d)
-        }
+        
         self.modalPresentationStyle = modal ? .overFullScreen :.fullScreen
         
-        from.present(self, animated: useDefaultAnimation, completion: completion)
-        self.contentView?.start(contain: self)
+        from.present(self, animated: useDefaultAnimation) { 
+            self.contentView?.start(contain: self)
+            completion?()
+        }
+        if let d = delay{
+            Timer.scheduledTimer(timeInterval: d, target: self, selector: #selector(innnerClose), userInfo: nil, repeats: false)
+        }
+        
     }
-    
+    public func showHud(from:UIViewController,completion: (() -> Void)? = nil){
+        showHud(from: from, delay: nil, modal: true, completion:completion)
+    }
     public var backgroudView:(HudPlain,UIView)->UIView? = {hud,content in
         return nil
     }
@@ -183,8 +190,9 @@ public class HudPlain:UIViewController{
         }
         
     }
-    override public func viewDidAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         self.animationShow(self,self.contentView!,nil)
+        super.viewDidAppear(animated)
     }
     override public func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         self.animationClose(self, self.contentView!) { (i) in
@@ -207,37 +215,97 @@ public class HudPlain:UIViewController{
 }
 
 
+public class HudProcess:HudPlain{
+    public var process:CGFloat = 0{
+        didSet{
+            (self.contentView as! IndicateContainerView).CircleView.time(time: process)
+            if process >= 1{
+                self.dismiss(animated: false)
+            }
+        }
+    }
+}
+
+
+
+
 
 // MARK:- Maker
 public class HudPlainMaker:NSObject{
-    public func makeCircle(color:UIColor)->HudPlain {
+    public func makeCenter(color:UIColor,stype:HudStyle)->HudPlain{
         let hud = HudPlain()
-        let c = CircleIndicateView()
-        c.color = color
+        func make(style:HudStyle)->CenterHudContainerView{
+            switch style {
+            case .warnning:
+                return CenterHudContainerView(indicate: WarnningIndicateView.self)
+                
+            case .waitting:
+                return CenterHudContainerView(indicate: CircleIndicateView.self)
+                
+            case .failure:
+                return CenterHudContainerView(indicate: FailureIndicateView.self)
+                
+            case .success:
+                return CenterHudContainerView(indicate: SuccessIndicateView.self)
+            }
+        }
+        let c = make(style: stype)
+        c.CircleView.color = color
         hud.content = {(_) in return c}
+
+        hud.layoutStyle = HudLayoutStyle.center(size: CGSize(width: 96, height: 96))
+        c.image = makeImage
         return hud
     }
-    public func makeMiddle(text:String,color:UIColor)->HudPlain{
+    public func makeMiddle(text:String,color:UIColor,style:HudStyle)->HudPlain{
+
         let hud = HudPlain()
-        let c = MiddleHudView<CircleIndicateView>()
+        func make(style:HudStyle)->MiddleHudContainerView{
+            switch style {
+            case .warnning:
+                return MiddleHudContainerView(indicate: WarnningIndicateView.self)
+                
+            case .waitting:
+                return MiddleHudContainerView(indicate: CircleIndicateView.self)
+            case .success:
+                return MiddleHudContainerView(indicate: SuccessIndicateView.self)
+            case .failure:
+                return MiddleHudContainerView(indicate: FailureIndicateView.self)
+            }
+        }
+        
+        
+        let c = make(style: style)
         c.CircleView.color = color
         c.label.text = text
         hud.content = { (_) in c}
-        c.CircleView.isElement = true
+   
         hud.Style = {$0.0.view.backgroundColor = UIColor.gray.withAlphaComponent(0.4)}
         hud.layoutStyle = HudLayoutStyle.middleAuto(max: 320, min: 80, HorizonOffset: 20)
+        c.image = makeImage
+        return hud
+    }
+    public func makeProcess(color:UIColor)->HudProcess{
+        let hud = HudProcess()
+        let c = CenterHudContainerView(indicate: CircleProcessIndicateView.self)
+        hud.content = {(_) in return c}
+        hud.layoutStyle = HudLayoutStyle.center(size: CGSize(width: 96, height: 96))
+        c.image = makeImage
+        return hud
+    }
+    lazy var makeImage:UIImage = {
         UIGraphicsBeginImageContextWithOptions(CGSize(width:40,height:40), false, UIScreen.main.scale)
         let rect = CGRect(x: 4, y: 4, width: 32, height: 32)
         let p = UIBezierPath(roundedRect:rect , cornerRadius: 4)
         UIColor.white.setFill()
         let context = UIGraphicsGetCurrentContext()
-        context?.setShadow(offset: CGSize(width:0,height:0), blur: 1, color: UIColor.black.withAlphaComponent(0.8).cgColor)
+        context?.setShadow(offset: CGSize(width:0,height:0), blur: 3, color: UIColor.black.withAlphaComponent(0.8).cgColor)
         p.fill()
-        c.image = UIGraphicsGetImageFromCurrentImageContext()
-        c.image = c.image?.resizableImage(withCapInsets: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
+        var image = UIGraphicsGetImageFromCurrentImageContext()
+        image = image?.resizableImage(withCapInsets: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
         UIGraphicsEndImageContext()
-        return hud
-    }
+        return image!
+    }()
     public func makeTest()->HudPlain{
         let hud = HudPlain()
         let l = UILabel()

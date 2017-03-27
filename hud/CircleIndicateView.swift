@@ -7,8 +7,11 @@
 //
 
 import UIKit
-
-public class CircleIndicateView:UIView{
+public protocol IndicateProperty{
+    var color:UIColor{get set}
+    var isElement:Bool {get set}
+}
+public class CircleIndicateView:baseIndicateView{
     open class override var layerClass: Swift.AnyClass {
         return CAShapeLayer.self
     }
@@ -39,7 +42,7 @@ public class CircleIndicateView:UIView{
     var i:Double = 0
     var y:Double = 0
     var j:Double = 0
-    public var color:UIColor = UIColor.red{
+    public override var color:UIColor{
         didSet{
             self.shapeLayer.strokeColor = self.color.cgColor
         }
@@ -59,5 +62,4 @@ public class CircleIndicateView:UIView{
         }
         y += 0.1
     }
-    public var isElement = false
 }
