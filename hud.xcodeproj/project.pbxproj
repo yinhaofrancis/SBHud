@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A90A2B221E8A40EB000E3057 /* WaterProcessIndicateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90A2B211E8A40EB000E3057 /* WaterProcessIndicateView.swift */; };
 		A92D4D341E850459000B12C8 /* HudPlain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D4D331E850459000B12C8 /* HudPlain.swift */; };
 		A93D31011E83BB1500247544 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D31001E83BB1500247544 /* AppDelegate.swift */; };
 		A93D31031E83BB1500247544 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D31021E83BB1500247544 /* ViewController.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A90A2B211E8A40EB000E3057 /* WaterProcessIndicateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterProcessIndicateView.swift; sourceTree = "<group>"; };
 		A92D4D331E850459000B12C8 /* HudPlain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudPlain.swift; sourceTree = "<group>"; };
 		A93D30FD1E83BB1500247544 /* hud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A93D31001E83BB1500247544 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				A9DF0BB71E881062004036EB /* MiddleView.swift */,
 				A9DF0BB51E863D6C004036EB /* CircleIndicateView.swift */,
 				A946F4D41E88E866006C126E /* CircleProcessIndicateView.swift */,
+				A90A2B211E8A40EB000E3057 /* WaterProcessIndicateView.swift */,
 				A946F4D01E88BA8A006C126E /* WarnningIndicateView.swift */,
 				A946F4D81E8902B5006C126E /* SuccessIndicateView.swift */,
 				A946F4D21E88DB9C006C126E /* FailureIndicateView.swift */,
@@ -291,6 +294,7 @@
 				A946F4D11E88BA8A006C126E /* WarnningIndicateView.swift in Sources */,
 				A9DF0BB81E881062004036EB /* MiddleView.swift in Sources */,
 				A946F4D31E88DB9C006C126E /* FailureIndicateView.swift in Sources */,
+				A90A2B221E8A40EB000E3057 /* WaterProcessIndicateView.swift in Sources */,
 				A93D31031E83BB1500247544 /* ViewController.swift in Sources */,
 				A9DF0BB61E863D6C004036EB /* CircleIndicateView.swift in Sources */,
 				A92D4D341E850459000B12C8 /* HudPlain.swift in Sources */,
