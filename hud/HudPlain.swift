@@ -214,7 +214,10 @@ public class HudPlain:UIViewController{
     }
 }
 
-
+public enum ProcessStyle{
+    case cirle
+    case water
+}
 public class HudProcess:HudPlain{
     public var process:CGFloat = 0{
         didSet{
@@ -285,10 +288,20 @@ public class HudPlainMaker:NSObject{
         c.image = makeImage
         return hud
     }
-    public func makeProcess(color:UIColor)->HudProcess{
+    public func makeProcess(color:UIColor,style:ProcessStyle)->HudProcess{
         let hud = HudProcess()
-        let c = CenterHudContainerView(indicate: CircleProcessIndicateView.self)
+        
+        func make(style:ProcessStyle)->baseIndicateView.Type{
+            switch style {
+            case .cirle:
+                return CircleProcessIndicateView.self
+            case .water:
+                return WaterProcessIndicateView.self
+            }
+        }
+        let c = CenterHudContainerView(indicate: make(style: style))
         hud.content = {(_) in return c}
+        c.CircleView.color = color
         hud.layoutStyle = HudLayoutStyle.center(size: CGSize(width: 96, height: 96))
         c.image = makeImage
         return hud

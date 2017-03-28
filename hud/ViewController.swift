@@ -26,6 +26,9 @@ class ViewController: UITableViewController {
             ["type":HudStyle.warnning,"color":UIColor.purple],
             ["type":HudStyle.failure,"color":UIColor.purple],
             ["type":HudStyle.success,"color":UIColor.purple]
+        ],[],[
+            ["type":ProcessStyle.cirle,"color":UIColor.purple],
+            ["type":ProcessStyle.water,"color":UIColor.purple],
         ]
     ]
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -34,12 +37,14 @@ class ViewController: UITableViewController {
         }else if indexPath.section == 1{
             make.makeMiddle(text: "请等待", color: data[0][indexPath.row]["color"] as! UIColor, style: data[0][indexPath.row]["type"] as! HudStyle).showHud(from: self, delay: 3)
         }else if indexPath.section == 2{
-            let a = make.makeProcess(color: UIColor.red)
-            
+            let a = make.makeProcess(color: data[indexPath.section][indexPath.row]["color"] as! UIColor, style: data[indexPath.section][indexPath.row]["type"] as! ProcessStyle)
             a.showHud(from: self)
             
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (t) in
                 a.process += 0.1
+                if a.process == 1{
+                    t.invalidate()
+                }
             })
         }
         
